@@ -20,4 +20,10 @@ router.get("/api/workouts", (req, res) => {
       res.status(400).json(err);
     });
 });
+
+router.put("/api/workouts/:id", (req, res) => {
+  Workout.findByIdAndupdate(req.params.id, {$push: {exercises: req.body}}, {new: true})
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
+});
 module.exports = router;
