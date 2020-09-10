@@ -12,7 +12,9 @@ app.use(express.static("public"));
 //use mongoose to connect to our database
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/swoletracker", {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useCreateIndex: true,
+  useUnifiedTopology: true
 });
 
 app.use(require("./routes/api.js"));
